@@ -9,7 +9,7 @@ public class Urinals {
     public List<String> s;
     public boolean goodString (String str) { //checks to see if valid string
         for(int i = 0; i < str.length() - 1; i++) {
-            if (str.charAt(i) != '0' || str.charAt(i) != '1') {
+            if (str.charAt(i) != '0' && str.charAt(i) != '1') {
                 return false;
             }
             if(str.charAt(i) == '1' && str.charAt(i + 1) == '1') {
