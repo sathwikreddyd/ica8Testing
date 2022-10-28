@@ -18,12 +18,13 @@ public class Urinals {
         }
         return true;
     }
-    public void openFile(String path){ //opens a file in path specified
+    public void openFile(String path) throws IOException{ //opens a file in path specified
         try {
             s = Files.readAllLines(Paths.get(path));
         }
         catch(IOException e) {
             System.out.println("urinal.dat file is not present in src/input/ folder. Please check and re run the program");
+            throw new IOException(e);
         }
     }
     public int writeToFile(List<Integer> l) {
@@ -95,7 +96,7 @@ public class Urinals {
         }
         return count;
     }
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
         Urinals u = new Urinals();
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter Input Format 1. Command Line 2. File (src/input/urinal.dat) ");
@@ -112,7 +113,13 @@ public class Urinals {
             sc.close();
         }
         else if (c == 2) {
-            u.openFile("src/input/urinal.dat");
+            try {
+                u.openFile("src/input/urinal.dat");
+            }
+            catch (IOException e) {
+                System.out.println("No File (src/input/urinal.dat)");
+                throw new IOException(e);
+            }
             if(u.s.size() == 0) {
                 System.out.println("Empty File");
                 System.exit(0);

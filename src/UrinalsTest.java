@@ -22,15 +22,33 @@ public class UrinalsTest {
     @Test
     void testOpenFile() { //check the no. of input lines of file matching with actual file
         Urinals u = new Urinals();
-        u.openFile("src/input/urinal.dat");
+        try {
+            u.openFile("src/input/urinal.dat");
+        }
+        catch(IOException e) {
+            System.out.println("no file");
+        }
         Assertions.assertEquals(4, u.s.size());
         System.out.println("====== Sathwik Reddy Dontham == TEST THREE EXECUTED =======");
     }
 
     @Test
+    void testFileNotFound(){
+        Urinals u = new Urinals();
+        IOException thrown = Assertions.assertThrows(IOException.class, () -> u.openFile("src/input/urinal2.txt"));
+        System.out.println("====== Sathwik Reddy Dontham == TEST FIVE EXECUTED =======");
+
+    }
+
+    @Test
     void testWriteToFile() { //test whether output contains same no. of lines as input
         Urinals u = new Urinals();
-        u.openFile("src/input/urinal.dat");
+        try {
+            u.openFile("src/input/urinal.dat");
+        }
+        catch(IOException e) {
+            System.out.println("no file");
+        }
         List<Integer> l = new ArrayList<Integer>();
         for(int i = 0;i < u.s.size();i++) {
             l.add(u.countUrinals(u.s.get(i)));
