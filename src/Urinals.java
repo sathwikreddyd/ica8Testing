@@ -105,10 +105,11 @@ public class Urinals {
                 System.out.println("Input string (Enter -1 to exit)");
                 String k = sc.next();
                 if(k.equals("-1")) {
-                    System.exit(0);
+                    break;
                 }
                 System.out.println("No. of urinals =  " + u.countUrinals(k));
             }
+            sc.close();
         }
         else if (c == 2) {
             u.openFile("src/input/urinal.dat");
