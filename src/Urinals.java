@@ -6,7 +6,11 @@ import java.util.*;
 public class Urinals {
     List<String> s;
     public boolean goodString (String str) {
-        System.out.println("Not yet implemented");
+        for(int i = 0; i < str.length() - 1; i++) {
+            if(str.charAt(i) == '1' && str.charAt(i + 1) == '1') {
+                return false;
+            }
+        }
         return true;
     }
     public void openFile(String path) {
