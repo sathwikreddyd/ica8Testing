@@ -8,8 +8,11 @@ Problem : In men's public toilets with urinals, there is this unwritten rule tha
 
 Ex: 
 000 -> 2
+
 111 -> -1
+
 010 -> 0
+
 100001 -> 1
 
 1. src/ contains main and test java files.
@@ -17,7 +20,8 @@ Ex:
 Main
 
 1. Execute main to get two options 1. Take input from CMD 2. Take from file
-2. Urinals count is displayed on screen
+2. For CMD input Urinals count is displayed on screen
+3. For Files then output is generated in src/output/ folder with incrementing number appended to file. If multiple Files are present, file with (rule(X).txt) highest X value is the latest output.
 
 Test
 
