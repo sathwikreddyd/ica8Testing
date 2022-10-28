@@ -93,6 +93,13 @@ public class Urinals {
         return count;
     }
     public static void main(String[] args) {
-
+        Urinals u = new Urinals();
+        u.openFile("src/input/urinal.dat");
+        ArrayList<Integer> l = new ArrayList<Integer>();
+        for(int i = 0; i < u.s.size(); i++) {
+            l.add(u.countUrinals(u.s.get(i)));
+        }
+        int k = u.writeToFile(l);
+        System.out.println("Executed Successfully");
     }
 }
