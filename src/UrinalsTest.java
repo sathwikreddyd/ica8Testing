@@ -25,7 +25,7 @@ public class UrinalsTest {
         try {
             u.openFile("src/input/urinal.dat");
         }
-        catch(IOException e) {
+        catch(Exception e) {
             System.out.println("no file");
         }
         Assertions.assertEquals(4, u.s.size());
@@ -33,12 +33,25 @@ public class UrinalsTest {
     }
 
     @Test
-    void testFileNotFound(){
+    void fileNotFoundException() {
         Urinals u = new Urinals();
-        IOException thrown = Assertions.assertThrows(IOException.class, () -> u.openFile("src/input/urinal2.txt"));
-        System.out.println("====== Sathwik Reddy Dontham == TEST FIVE EXECUTED =======");
-
+        IOException thrown = Assertions.assertThrows(
+                IOException.class,
+                () -> u.openFile("urinal3.dat"),"error");
     }
+    @Test
+    void testEmptyFile() {
+        Urinals u = new Urinals();
+        try {
+            u.openFile("src/input/urinal2.dat");
+        }
+        catch(IOException e) {
+            System.out.println("no file");
+        }
+        Assertions.assertEquals(0,u.s.size());
+        System.out.println("====== Sathwik Reddy Dontham == TEST FIVE EXECUTED =======");
+    }
+
 
     @Test
     void testWriteToFile() { //test whether output contains same no. of lines as input
@@ -46,7 +59,7 @@ public class UrinalsTest {
         try {
             u.openFile("src/input/urinal.dat");
         }
-        catch(IOException e) {
+        catch(Exception e) {
             System.out.println("no file");
         }
         List<Integer> l = new ArrayList<Integer>();

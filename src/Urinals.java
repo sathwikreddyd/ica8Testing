@@ -116,8 +116,9 @@ public class Urinals {
             try {
                 u.openFile("src/input/urinal.dat");
             }
-            catch (IOException e) {
-                System.out.println("No File (src/input/urinal.dat)");
+            catch (IOException e)
+            {
+                System.out.println("Exception");
                 throw new IOException(e);
             }
             if(u.s.size() == 0) {
