@@ -9,6 +9,9 @@ public class Urinals {
     public List<String> s;
     public boolean goodString (String str) { //checks to see if valid string
         for(int i = 0; i < str.length() - 1; i++) {
+            if (str.charAt(i) != '0' || str.charAt(i) != '1') {
+                return false;
+            }
             if(str.charAt(i) == '1' && str.charAt(i + 1) == '1') {
                 return false;
             }
@@ -20,7 +23,7 @@ public class Urinals {
             s = Files.readAllLines(Paths.get(path));
         }
         catch(IOException e) {
-            e.printStackTrace();
+            System.out.println("urinal.dat file is not present in src/input/ folder. Please check and re run the program");
         }
     }
     public int writeToFile(List<Integer> l) {
@@ -99,12 +102,20 @@ public class Urinals {
         int c = sc.nextInt();
         if(c == 1) {
             while(true) {
-                System.out.println("Input string (Enter Ctrl + D to exit)");
-                System.out.println("No. of urinals =  " + u.countUrinals(sc.next()));
+                System.out.println("Input string (Enter -1 to exit)");
+                String k = sc.next();
+                if(k.equals("-1")) {
+                    System.exit(0);
+                }
+                System.out.println("No. of urinals =  " + u.countUrinals(k));
             }
         }
         else if (c == 2) {
             u.openFile("src/input/urinal.dat");
+            if(u.s.size() == 0) {
+                System.out.println("Empty File");
+                System.exit(0);
+            }
             ArrayList<Integer> l = new ArrayList<Integer>();
             for(int i = 0; i < u.s.size(); i++) {
                 l.add(u.countUrinals(u.s.get(i)));
