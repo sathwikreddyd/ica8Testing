@@ -10,7 +10,15 @@ public class UrinalsTest {
 
     @Test
     void testCountUrinals() {
-        Assertions.assertEquals(1, (new Urinals()).countUrinals("100001"));
+        Assertions.assertEquals(-1, (new Urinals()).countUrinals("1101"));
         System.out.println("====== Sathwik Reddy Dontham == TEST TWO EXECUTED =======");
+    }
+
+    @Test
+    void testOpenFile() {
+        Urinals u = new Urinals();
+        u.openFile("src/input/urinal.dat");
+        Assertions.assertEquals(2, u.s.size());
+        System.out.println("====== Sathwik Reddy Dontham == TEST THREE EXECUTED =======");
     }
 }

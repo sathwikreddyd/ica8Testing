@@ -2,9 +2,10 @@
 // GitHub: https://github.com/sathwikreddyd/ica8Testing
 import java.io.IOException;
 import java.nio.file.*;
+import java.io.*;
 import java.util.*;
 public class Urinals {
-    List<String> s;
+    public List<String> s;
     public boolean goodString (String str) {
         for(int i = 0; i < str.length() - 1; i++) {
             if(str.charAt(i) == '1' && str.charAt(i + 1) == '1') {
@@ -13,13 +14,21 @@ public class Urinals {
         }
         return true;
     }
-    public void openFile(String path) {
-
+    public void openFile(String path){
+        try {
+            s = Files.readAllLines(Paths.get(path));
+        }
+        catch(IOException e) {
+            e.printStackTrace();
+        }
     }
     public String getString() {
         return "null";
     }
     public int countUrinals(String str) {
+        if(!goodString(str)) {
+            return -1;
+        }
         if (str.length() == 0 || (str.length() == 1 && str.charAt(0) == '1')) {
             return 0;
         }
@@ -37,7 +46,7 @@ public class Urinals {
             else if(i + 1 > str.length()) {
                 break;
             }
-            if (str.charAt(i) == '0' && str.charAt(i + 1) == '0') {
+            else if (str.charAt(i) == '0' && str.charAt(i + 1) == '0') {
                 count++;
                 i++;
             }
